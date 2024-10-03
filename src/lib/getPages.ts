@@ -2,7 +2,7 @@
     method: string;
     headers: {};
   };
-
+// To do: single page options
 export const getAllPages = async (token: string, allDraft: boolean) => {
     const requestOptions: RequestOptions = {
       method: 'GET',

@@ -32,13 +32,15 @@
   };
 </script>
 
-<h1 class="text-3xl font-bold text-center">CMS Ripper</h1>
-<form class="flex flex-col gap-2 items-center" on:submit={formAction}>
-  <div class="flex gap-4 justify-center">
+<h1 class="text-3xl font-bold text-center text-primary">CMS Ripper</h1>
+<form class="flex flex-col items-center gap-2" on:submit={formAction}>
+  <div class="flex justify-center gap-4">
     <div class="flex flex-col">
-      <label for="tokenOne">Token from starting portal</label>
+      <label class="label-text text-primary" for="tokenOne"
+        >Token from starting portal</label
+      >
       <input
-        class="border border-gray-300"
+        class="w-full max-w-xs input input-bordered input-primary"
         on:input={updateFormInput}
         id="tokenOne"
         name="tokenOne"
@@ -46,26 +48,29 @@
       />
     </div>
     <div class="flex flex-col">
-      <label for="tokenTwo">Token from destination portal</label>
+      <label class="label-text text-primary" for="tokenTwo"
+        >Token from destination portal</label
+      >
       <input
-        class="border border-gray-300"
+        class="w-full max-w-xs input input-bordered input-primary"
         on:input={updateFormInput}
         id="tokenTwo"
         name="tokenTwo"
         type="text"
       />
     </div>
-    <div class="flex flex-col">
-      <label for="allDraft">import all as draft</label>
-      <input
-        on:input={updateFormCheckbox}
-        type="checkbox"
-        name="allDraft"
-        id="allDraft"
-      />
+    <div class="form-control">
+      <label class="flex flex-col p-0 cursor-pointer label" for="allDraft">
+        <span class="label-text text-primary"> Import all as draft </span>
+        <input
+          on:input={updateFormCheckbox}
+          class="checkbox checkbox-primary"
+          type="checkbox"
+          name="allDraft"
+          id="allDraft"
+        />
+      </label>
     </div>
   </div>
-  <button class="border border-black p-3 rounded max-w-fit" type="submit"
-    >Get pages</button
-  >
+  <button class="btn btn-outline btn-primary" type="submit">Get pages</button>
 </form>

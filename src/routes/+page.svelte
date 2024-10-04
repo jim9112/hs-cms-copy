@@ -1,6 +1,11 @@
 <script lang="ts">
   import TextInput from './components/TextInput.svelte';
   let loading = false;
+  let toast = {
+    show: false,
+    message: '',
+    type: '',
+  };
   let formData = {
     tokenOne: '',
     tokenTwo: '',
@@ -19,8 +24,22 @@
       },
     });
     const data = await res.json();
-    console.log(data);
+    const newObj = JSON.parse(data);
+    console.log(newObj);
     loading = false;
+    if (newObj.status === 'COMPLETE') {
+      toast = {
+        show: true,
+        message: 'Pages imported successfully',
+        type: 'success',
+      };
+    } else {
+      toast = {
+        show: true,
+        message: 'Error importing pages',
+        type: 'error',
+      };
+    }
   };
   const updateFormInput = (e: Event) => {
     formData = {
@@ -38,6 +57,19 @@
   };
 </script>
 
+{#if toast.show}
+  <div class="toast toast-top toast-end">
+    {#if toast.type === 'error'}
+      <div class="alert alert-error">
+        <span>{toast.message}</span>
+      </div>
+    {:else}
+      <div class="alert alert-success">
+        <span>{toast.message}</span>
+      </div>
+    {/if}
+  </div>
+{/if}
 {#if loading}
   <dialog id="my_modal_1" class="modal modal-open">
     <div class="flex flex-col items-center modal-box">

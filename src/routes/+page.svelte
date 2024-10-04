@@ -1,4 +1,6 @@
 <script lang="ts">
+  import TextInput from '$lib/components/TextInput.svelte';
+
   let formData = {
     tokenOne: '',
     tokenTwo: '',
@@ -35,30 +37,16 @@
 <h1 class="mb-3 text-3xl font-bold text-center text-primary">CMS Ripper</h1>
 <form class="flex flex-col items-center gap-2" on:submit={formAction}>
   <div class="flex justify-center gap-4">
-    <div class="flex flex-col">
-      <label class="label-text text-primary" for="tokenOne"
-        >Token from starting portal</label
-      >
-      <input
-        class="w-full max-w-xs input input-bordered input-primary"
-        on:input={updateFormInput}
-        id="tokenOne"
-        name="tokenOne"
-        type="text"
-      />
-    </div>
-    <div class="flex flex-col">
-      <label class="label-text text-primary" for="tokenTwo"
-        >Token from destination portal</label
-      >
-      <input
-        class="w-full max-w-xs input input-bordered input-primary"
-        on:input={updateFormInput}
-        id="tokenTwo"
-        name="tokenTwo"
-        type="text"
-      />
-    </div>
+    <TextInput
+      inputAction={updateFormInput}
+      label="Token from starting portal"
+      inputName="tokenOne"
+    />
+    <TextInput
+      inputAction={updateFormInput}
+      label="Token from destination portal"
+      inputName="tokenTwo"
+    />
     <div class="form-control">
       <label class="flex flex-col p-0 cursor-pointer label" for="allDraft">
         <span class="label-text text-primary"> Import all as draft </span>

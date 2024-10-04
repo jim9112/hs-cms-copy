@@ -32,7 +32,7 @@
   };
 </script>
 
-<h1 class="text-3xl font-bold text-center text-primary">CMS Ripper</h1>
+<h1 class="mb-3 text-3xl font-bold text-center text-primary">CMS Ripper</h1>
 <form class="flex flex-col items-center gap-2" on:submit={formAction}>
   <div class="flex justify-center gap-4">
     <div class="flex flex-col">

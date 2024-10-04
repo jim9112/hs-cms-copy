@@ -9,10 +9,10 @@
     sitePage: true,
   };
   const formAction = async () => {
-    const { tokenOne, tokenTwo, allDraft } = formData;
+    const { tokenOne, tokenTwo, allDraft, sitePage } = formData;
     const res = await fetch('/pages', {
       method: 'post',
-      body: JSON.stringify({ tokenOne, tokenTwo, allDraft }),
+      body: JSON.stringify({ tokenOne, tokenTwo, allDraft, sitePage }),
       headers: {
         'Content-Type': 'application/json',
       },

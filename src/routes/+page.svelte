@@ -1,6 +1,6 @@
 <script lang="ts">
-  import TextInput from '$lib/components/TextInput.svelte';
-
+  import TextInput from './components/TextInput.svelte';
+  let loading = false;
   let formData = {
     tokenOne: '',
     tokenTwo: '',
@@ -9,6 +9,7 @@
     sitePage: true,
   };
   const formAction = async () => {
+    loading = true;
     const { tokenOne, tokenTwo, allDraft, sitePage } = formData;
     const res = await fetch('/pages', {
       method: 'post',
@@ -19,6 +20,7 @@
     });
     const data = await res.json();
     console.log(data);
+    loading = false;
   };
   const updateFormInput = (e: Event) => {
     formData = {
@@ -36,6 +38,14 @@
   };
 </script>
 
+{#if loading}
+  <dialog id="my_modal_1" class="modal modal-open">
+    <div class="flex flex-col items-center modal-box">
+      <span class="loading loading-spinner loading-lg text-accent"></span>
+      <p class="py-4">Press ESC key or click the button below to close</p>
+    </div>
+  </dialog>
+{/if}
 <h1 class="mb-3 text-3xl font-bold text-center text-primary">CMS Ripper</h1>
 <div class="flex mb-3 justify-evenly">
   <div class="form-control">

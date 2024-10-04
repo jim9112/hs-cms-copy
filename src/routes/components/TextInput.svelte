@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex flex-col">
-  <label class="label-text" for={inputName}>
+  <label class="text-center label-text" for={inputName}>
     {label}
   </label>
   <input

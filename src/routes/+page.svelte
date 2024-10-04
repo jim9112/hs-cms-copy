@@ -1,5 +1,6 @@
 <script lang="ts">
   import TextInput from './components/TextInput.svelte';
+  import LoadingDialog from './components/LoadingDialog.svelte';
   let loading = false;
   let toast = {
     show: false,
@@ -48,13 +49,6 @@
         .value,
     };
   };
-  const updateFormCheckbox = (e: Event) => {
-    formData = {
-      ...formData,
-      [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement)
-        .checked,
-    };
-  };
 </script>
 
 {#if toast.show}
@@ -84,12 +78,7 @@
   </div>
 {/if}
 {#if loading}
-  <dialog id="my_modal_1" class="modal modal-open">
-    <div class="flex flex-col items-center modal-box">
-      <span class="loading loading-spinner loading-lg text-accent"></span>
-      <p class="py-4">Press ESC key or click the button below to close</p>
-    </div>
-  </dialog>
+  <LoadingDialog>Copying pages.....</LoadingDialog>
 {/if}
 <h1 class="mb-3 text-3xl font-bold text-center text-primary">CMS Ripper</h1>
 <div class="flex mb-3 justify-evenly">
@@ -121,7 +110,7 @@
       <label class="flex flex-col p-0 cursor-pointer label" for="allDraft">
         <span class="label-text"> Import all as draft </span>
         <input
-          on:input={updateFormCheckbox}
+          bind:checked={formData.allDraft}
           class="checkbox checkbox-primary"
           type="checkbox"
           name="allDraft"

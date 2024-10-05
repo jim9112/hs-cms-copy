@@ -19,7 +19,6 @@ export const getAllPages = async (token: string, allDraft: boolean, sitePage: bo
     const modifiedData = data.results.map((page: {
       archivedAt: string | undefined,
       state: string,
-      publishImmediately: boolean
     }) => {
       const pageCopy = { ...page };
       delete pageCopy.archivedAt;

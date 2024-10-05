@@ -82,13 +82,13 @@
       inputAction={updateFormInput}
       label="Token from starting portal"
       inputName="tokenOne"
-      required="true"
+      required={true}
     />
     <TextInput
       inputAction={updateFormInput}
       label="Token from destination portal"
       inputName="tokenTwo"
-      required="true"
+      required={true}
     />
     <div class="form-control">
       <label class="flex flex-col p-0 cursor-pointer label" for="allDraft">

@@ -2,6 +2,7 @@
   import TextInput from './components/TextInput.svelte';
   import LoadingDialog from './components/LoadingDialog.svelte';
   import Toast from './components/Toast.svelte';
+  // component state
   let loading = false;
   let toast = {
     show: false,
@@ -15,6 +16,7 @@
     batch: true,
     sitePage: true,
   };
+  // bubble events for toast
   function handleChange(ev: any) {
     toast = ev.detail.toast;
   }
@@ -30,7 +32,6 @@
     });
     const data = await res.json();
     const newObj = JSON.parse(data);
-    console.log(newObj);
     loading = false;
     if (newObj.status === 'COMPLETE') {
       toast = {

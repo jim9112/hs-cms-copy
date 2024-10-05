@@ -2,6 +2,7 @@
   export let inputAction;
   export let label;
   export let inputName;
+  export let required = false;
 </script>
 
 <div class="flex flex-col">
@@ -14,5 +15,6 @@
     id={inputName}
     name={inputName}
     type="text"
+    {required}
   />
 </div>
